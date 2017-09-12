@@ -7,8 +7,8 @@ MAINTAINER "The Lantern Team" <team@getlantern.org>
 ENV WORKDIR /lantern
 ENV SECRETS /secrets
 
-RUN mkdir -p $WORKDIR
-RUN mkdir -p $SECRETS
+RUN mkdir -p "$WORKDIR"
+RUN mkdir -p "$SECRETS"
 
 # Updating system.
 RUN yum install -y deltarpm && yum update -y && yum clean packages
@@ -64,7 +64,7 @@ ENV GOPATH /
 ENV PATH $PATH:$GOROOT/bin
 
 ENV GO_PACKAGE_URL https://s3-eu-west-1.amazonaws.com/uaalto/go1.6.2_lantern_20160503_linux_amd64.tar.gz
-RUN curl -sSL $GO_PACKAGE_URL | tar -xvzf - -C /usr/local
+RUN curl -sSL "$GO_PACKAGE_URL" | tar -xvzf - -C /usr/local
 
 # Expect the $WORKDIR volume to be mounted.
 VOLUME [ "$WORKDIR" ]
